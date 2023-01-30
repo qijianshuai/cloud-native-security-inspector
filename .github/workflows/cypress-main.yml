@@ -1,25 +1,17 @@
-name: example-config
-on:
-  push:
-    branches:
-      - 'master'
-  pull_request:
+name: Cypress Tests
+
+on: [push]
+
 jobs:
-  separate-specs-v9:
-    # example where we pass specs to run via multiple lines
-    runs-on: ubuntu-22.04
+  cypress-run:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cypress tests
-        uses: ./
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          working-directory: src/frontend
           build: npm run build
           start: npm start
-          wait-on: 'http://localhost:4004'
-          config: baseUrl=http://localhost:4004
-          spec: |
-            cypress/e2e/spec.cy.ts
-            cypress/e2e/spec.cy.ts
