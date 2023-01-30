@@ -17,6 +17,12 @@ jobs:
           path: ${{ github.repository }}
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - name: Config Go env
+        run: |
+          cd ${{ github.repository }}
+          cd src/frontend
+        shell: bash
+        
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
