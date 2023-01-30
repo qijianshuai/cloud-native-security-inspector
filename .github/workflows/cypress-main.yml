@@ -18,4 +18,5 @@ jobs:
           # print information about detected browsers, etc
           # see https://on.cypress.io/command-line#cypress-info
           build: npm run build
+          start: npm start
           working-directory: src/frontend
