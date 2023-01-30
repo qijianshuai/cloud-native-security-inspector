@@ -19,13 +19,11 @@ jobs:
       # and run all Cypress tests
       - name: Config Node env
         run: |
-          cd ${{ github.repository }}
-          cd src/frontend
-        shell: bash
+          cd ${{ github.repository }}/src/frontend
         
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install: false
+          install: true
           build: npm run build
           start: npm start
