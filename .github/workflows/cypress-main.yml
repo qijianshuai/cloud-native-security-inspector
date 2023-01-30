@@ -17,7 +17,7 @@ jobs:
         
       - name: cd cypress
         run: |
-          cd ${{ github.repository }}
+          cd ..
           cd src/frontend
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
