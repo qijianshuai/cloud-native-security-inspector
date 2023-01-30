@@ -1,28 +1,17 @@
 name: Cypress Tests
 
-on: 
-  workflow_dispatch:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          path: ${{ github.repository }}
+      - name: Checkout
+        uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Config Node env
-        run: |
-          cd ${{ github.repository }}/src/frontend
-        
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5.2.0 # use the explicit version number
         with:
           install: false
           build: npm run build
