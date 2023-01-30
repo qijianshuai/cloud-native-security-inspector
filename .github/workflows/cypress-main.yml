@@ -1,22 +1,18 @@
-name: example-edge
-on:
-  push:
-    branches:
-      - 'main'
-  pull_request:
+name: Cypress Tests
+
+on: [push]
+
 jobs:
-  tests:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cypress info
-        uses: ./
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          # just for full picture after installing Cypress
-          # print information about detected browsers, etc
-          # see https://on.cypress.io/command-line#cypress-info
+          install: false
           build: npm run build
           start: npm start
-          working-directory: src/frontend
