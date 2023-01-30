@@ -1,4 +1,4 @@
-name: Cypress Main Tests
+name: Cypress Tests
 
 on: [push]
 
@@ -6,10 +6,12 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v2
+#       - name: Checkout
+#         uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          install: false
+          build: npm run build
           start: npm start
-          working-directory: src/frontend
-          
