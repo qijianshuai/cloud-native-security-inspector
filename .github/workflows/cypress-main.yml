@@ -12,6 +12,9 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        
+      - name: Cypress tests
+        uses: ./
         with:
           working-directory: src/frontend
           install: false
