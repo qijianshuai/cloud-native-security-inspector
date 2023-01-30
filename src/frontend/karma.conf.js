@@ -30,6 +30,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
+      type: 'html',
       dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
@@ -60,8 +61,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    singleRun: true,
-    browsers: ['ChromeHeadlessNoSandbox'],
+    singleRun: false,
+    browsers: ['Chrome', 'ChromeHeadlessNoSandbox'],
     browserDisconnectTolerance: 2,
     browserNoActivityTimeout: 50000,
     customLaunchers: {
