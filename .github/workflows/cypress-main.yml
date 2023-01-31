@@ -30,5 +30,4 @@ jobs:
       - name: Install examples dependencies
         run: |
           cd src/frontend
-          npm run pro:start
           npm run cypress:run
