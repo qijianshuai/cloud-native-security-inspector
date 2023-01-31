@@ -33,6 +33,7 @@ jobs:
           npm run start
           
   tests:
+    needs: [source]
     runs-on: ubuntu-latest
     strategy:
       matrix:
