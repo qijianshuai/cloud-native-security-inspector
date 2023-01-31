@@ -30,7 +30,7 @@ jobs:
       - name: Install examples dependencies
         run: |
           cd src/frontend
-          npm run start
+          npm run pro:start
 
       - name: Tests
         run: |
