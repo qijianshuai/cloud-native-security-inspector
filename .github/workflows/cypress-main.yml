@@ -27,9 +27,9 @@ jobs:
           fi
 
       - name: Install examples dependencies
-        with:          
-          working-directory: src/frontend
-          run: npm run start
+        run: |
+          cd src/frontend
+          npm run start
 
       - name: Tests
         run: npm run test
