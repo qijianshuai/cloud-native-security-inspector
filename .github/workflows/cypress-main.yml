@@ -33,4 +33,6 @@ jobs:
           npm run start
 
       - name: Tests
-        run: npm run test
+        run: |
+          cd src/frontend
+          npm run cypress:run
