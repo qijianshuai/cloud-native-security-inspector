@@ -1,19 +1,27 @@
-name: Cypress Tests
+name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [lts/-2, lts/-1]
+        cypress-version: [10, 11, 12]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v3
-        with:          
-          working-directory: src/frontend/cypress
-          # build: npm run build2
-          install: false
-          start: npm start
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm i cypress@${{ matrix.cypress-version }}
+      - run: npm run build --if-present
+      - run: npm test
