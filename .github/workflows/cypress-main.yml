@@ -17,10 +17,17 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi
 
       - name: Install examples dependencies
-        run: npm run install
+        run: npm run start
 
       - name: Tests
         run: npm run test
