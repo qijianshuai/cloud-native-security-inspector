@@ -31,8 +31,4 @@ jobs:
         run: |
           cd src/frontend
           npm run pro:start
-
-      - name: Tests
-        run: |
-          cd src/frontend
           npm run cypress:run
