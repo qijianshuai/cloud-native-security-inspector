@@ -33,6 +33,7 @@ jobs:
           npm run start &
           sleep 30
       - name: open
+        uses: cypress-io/github-action@v1
         with:
           wait-on: http://localhost:4004
           
