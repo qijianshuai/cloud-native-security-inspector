@@ -32,6 +32,9 @@ jobs:
           cd src/frontend
           npm run start &
           sleep 30
+      - name: open
+        with:
+          wait-on: http://localhost:4004
           
       - name: test e2e
         run: |
