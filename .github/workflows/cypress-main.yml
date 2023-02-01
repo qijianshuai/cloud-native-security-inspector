@@ -27,16 +27,16 @@ jobs:
           npm i
           fi
 
-#       - name: run portal
-#         run: |
-#           cd src/frontend
-#           npm run start &
-#           sleep 30
+      - name: run portal
+        run: |
+          cd src/frontend
+          npm run start &
+          sleep 30
       - name: open
         uses: cypress-io/github-action@v1
         with:
           install: false
-          start: npm run start
+#           start: npm run start
           wait-on: 'http://localhost:4004'
           wait-on-timeout: 120
           record: true
