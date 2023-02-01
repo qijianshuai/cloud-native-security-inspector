@@ -40,7 +40,6 @@ jobs:
           start: npm run start
           wait-on: 'http://localhost:4004'
           wait-on-timeout: 120
-          browser: chrome
           record: true
           parallel: true
           
